@@ -44,8 +44,9 @@ class Onboarding extends React.Component {
 
         for (let i = 0; i < results.rows.length; ++i) {
           dados = results.rows.item(i);
-          const { id, username } = JSON.parse(dados.user);
-          this.props.addSession(id, dados.token, username);
+          const user = JSON.parse(dados.user);
+          const { id, username } = user;
+          this.props.addSession(id, dados.token, username, user);
           navigation.navigate("Home");
           return true;
         }

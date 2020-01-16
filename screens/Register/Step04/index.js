@@ -13,7 +13,6 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
 
 export default function Step01({ next }) {
   const [policy, setPolicy] = useState(false);
-  const [message, setMessage] = useState("");
   return (
     <Container>
       <Policy>
@@ -31,11 +30,16 @@ export default function Step01({ next }) {
       </Block>
       <Block>
         <Button
-          color="primary"
+          color={!policy ? "DISABLED" : "primary"}
+          disabled={!policy}
           onPress={() => next()}
           style={{ width: "100%" }}
         >
-          <Text bold size={14} color={argonTheme.COLORS.WHITE}>
+          <Text
+            bold
+            size={14}
+            color={!policy ? argonTheme.COLORS.MUTED : argonTheme.COLORS.WHITE}
+          >
             CREATE ACCOUNT
           </Text>
         </Button>

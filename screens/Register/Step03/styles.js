@@ -27,15 +27,16 @@ export const InputContainer = styled.View`
   align-self: center;
 `;
 export const InputMessage = styled.TextInput.attrs({
-  keyboardType: "decimal-pad",
-  maxLength: 1,
+  keyboardType: "number-pad",
+  maxLength: 4,
   returnKeyType: "done"
 })`
   border-bottom-width: 2px;
   border-bottom-color: #d9d9d9;
   color: #999;
-  width: 50px;
+  width: 250px;
   height: 50px;
   text-align: center;
   font-size: 28px;
+  letter-spacing: ${props => (props.value.length > 1 ? 20 : 0)}px;
 `;

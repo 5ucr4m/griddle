@@ -9,13 +9,14 @@ import { argonTheme } from "../constants";
 
 class ArInput extends React.Component {
   render() {
-    const { shadowless, success, error } = this.props;
+    const { shadowless, success, error, width } = this.props;
 
     const inputStyles = [
       styles.input,
       !shadowless && styles.shadow,
       success && styles.success,
       error && styles.error,
+      width && { width },
       { ...this.props.style }
     ];
 

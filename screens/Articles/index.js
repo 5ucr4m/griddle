@@ -7,7 +7,7 @@ import Comments from "./components/comments";
 import Votes from "./components/votes";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-import { Container, Content, ItemsContent } from "./styles";
+import { Container, Content, ItemsContent, Author } from "./styles";
 
 import { articles } from "../../constants";
 
@@ -17,6 +17,8 @@ function Articles({ navigation }) {
   useEffect(() => {
     (!item || !articles[item.id]) && navigation.navigate("Home");
   }, []);
+
+  console.log(item);
 
   return (
     <Container>
@@ -45,6 +47,7 @@ function Articles({ navigation }) {
           >
             <Image source={item.image}></Image>
           </Gestures>
+          <Author>@{item.user.username}</Author>
           <ItemsContent
             horizontal={true}
             howsHorizontalScrollIndicator={true}

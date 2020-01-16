@@ -24,3 +24,11 @@ export const Block = styled.View`
   width: 80%;
   margin-bottom: 15px;
 `;
+
+export const BlockRow = styled.View`
+  flex-direction: row;
+  justify-content: center;
+  align-self: center;
+  width: 80%;
+  margin-bottom: 15px;
+`;

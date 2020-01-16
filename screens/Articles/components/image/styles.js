@@ -4,7 +4,7 @@ import { Dimensions } from "react-native";
 const { width, height } = Dimensions.get("window");
 
 export const Container = styled.View`
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   box-shadow: 2px 2px 10px #ddd;
   border-radius: 5px;
 `;

@@ -1,7 +1,7 @@
-export function addSession(user_id, token, username) {
+export function addSession(user_id, token, username, user) {
   return {
     type: "@session/ADD",
-    payload: { user_id, token, username }
+    payload: { user_id, token, username, user }
   };
 }
 

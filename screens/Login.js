@@ -20,7 +20,6 @@ import * as SQLite from "expo-sqlite";
 import { Button, Icon, Input } from "../components";
 import { Images, argonTheme } from "../constants";
 import api from "../service/api";
-import { FB_APP_ID } from "../env";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -147,6 +146,7 @@ class Login extends React.Component {
       .then(res => res.json())
       .then(res => {
         if (res !== null) {
+          console.log(localUser);
           localUser = {
             fname: res.profile.first_name,
             lname: res.profile.last_name,
