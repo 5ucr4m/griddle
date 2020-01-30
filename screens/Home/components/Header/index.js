@@ -12,7 +12,7 @@ function Header({ navigation }) {
     <Container>
       <Block>
         <Icon>
-          <Image source={IconIcon} style={{ width: 35, height: 35 }} />
+          <Image source={IconIcon} style={{ width: 32, height: 32 }} />
         </Icon>
       </Block>
       <Block flex={2} center>
@@ -20,7 +20,7 @@ function Header({ navigation }) {
       </Block>
       <Block>
         <Icon right>
-          <Image source={NotyIcon} style={{ width: 35, height: 35 }} />
+          <Image source={NotyIcon} style={{ width: 32, height: 32 }} />
         </Icon>
       </Block>
     </Container>

@@ -7,6 +7,8 @@ import api from "../../service/api";
 
 import { Container, Content } from "./styles";
 import Header from "./components/Header";
+import Search from "./components/Search";
+import LastPost from "./components/LastPost";
 import Footer from "./components/Footer";
 import Galery from "./components/Galery";
 import FloatImage from "./components/FloatImage";
@@ -70,6 +72,8 @@ export default function Home() {
     <>
       <Container>
         <Header />
+        <Search />
+        <LastPost />
         <Content>
           {!!load ? (
             <ActivityIndicator color="#000" />

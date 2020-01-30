@@ -2,15 +2,18 @@ import styled, { css } from "styled-components/native";
 import { LinearGradient } from "expo-linear-gradient";
 
 export const Container = styled(LinearGradient).attrs({
-  colors: ["#6842A2", "#3A1B8C"]
+  colors: ["#332286", "#6D4FB2"]
 })`
   flex-direction: row;
   width: 100%;
-  height: 80px;
+  height: 87px;
   justify-content: space-between;
   align-items: center;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-bottom-width: 2px;
+  border-bottom-color: #c56fd7;
+  margin-top: 0;
 `;
 
 export const Block = styled.View`

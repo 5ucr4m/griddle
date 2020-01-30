@@ -38,7 +38,7 @@ export default function Step02({ next, data }) {
   }
 
   useEffect(() => {
-    prefix.trim().length > 2 && phone.trim().length > 6 && avaliable
+    prefix.trim().length > 0 && phone.trim().length > 6 && avaliable
       ? setDisabledBtn(false)
       : setDisabledBtn(true);
   }, [phone, avaliable]);

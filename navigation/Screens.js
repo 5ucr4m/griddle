@@ -157,9 +157,8 @@ const AppStack = createStackNavigator(
         headerTransparent: true
       })
     }
-  }
-  //   Menu,
-  //   { initialRouteName: "Home" }
+  },
+  { initialRouteName: "Login" }
 );
 
 const AppContainer = createAppContainer(AppStack);
