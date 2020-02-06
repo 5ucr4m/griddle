@@ -4,8 +4,8 @@ import store from "../store";
 
 const api = axios.create({
   //   baseURL: "http://67.227.214.144:3010/"
-  baseURL: "http://192.168.15.21:3010/"
-  //   baseURL: "http://ced02251.ngrok.io"
+  // baseURL: "http://192.168.15.2:3010/"
+  baseURL: "http://2c866e99.ngrok.io"
 });
 
 api.interceptors.request.use(async config => {

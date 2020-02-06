@@ -20,7 +20,7 @@ const Screen = Dimensions.get("screen");
 
 function FloatImage({ image, visible = false, setVisible }) {
   const dispatch = useDispatch();
-  const [fadeAnim] = useState(new Animated.Value(0));
+  const [fadeAnim] = useState(new Animated.Value(0.6));
   const [width] = useState(new Animated.Value(10));
   const [height] = useState(new Animated.Value(10));
   const [positionX] = useState(new Animated.Value(0));

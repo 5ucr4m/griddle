@@ -16,12 +16,15 @@ import FloatImage from "./components/FloatImage";
 import { loading as _loading } from "../../store/modules/pictures/actions";
 import { addNoty } from "../../store/modules/notify/actions";
 
+import { shuffleArray } from "../../helpers/sortArray";
+
 console.disableYellowBox = true;
 
 export default function Home() {
   const dispatch = useDispatch();
   const [visible, setVisible] = useState(true);
-  const images = useSelector(state => state.pictures.data);
+  const images = useSelector(state => shuffleArray(state.pictures.data));
+  const imagesBox = useSelector(state => state.pictures.data[0]);
   const load = useSelector(state => state.pictures.loading);
   const session = useSelector(state => state.session);
 
@@ -82,7 +85,7 @@ export default function Home() {
               <Galery images={images}></Galery>
               {session.fistTime && (
                 <FloatImage
-                  image={images[0]}
+                  image={imagesBox}
                   visible={visible}
                   setVisible={setVisible}
                 />
