@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ActivityIndicator } from "react-native";
+import { ActivityIndicator, StatusBar } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import * as Permissions from "expo-permissions";
 import { Notifications } from "expo";
@@ -72,29 +72,28 @@ export default function Home() {
   };
 
   return (
-    <>
-      <Container>
-        <Header />
-        <Search />
-        <LastPost />
-        <Content>
-          {!!load ? (
-            <ActivityIndicator color="#000" />
-          ) : (
-            <>
-              <Galery images={images}></Galery>
-              {session.fistTime && (
-                <FloatImage
-                  image={imagesBox}
-                  visible={visible}
-                  setVisible={setVisible}
-                />
-              )}
-            </>
-          )}
-        </Content>
-        <Footer></Footer>
-      </Container>
-    </>
+    <Container>
+      <StatusBar barStyle="light-content" />
+      <Header />
+      <Search />
+      <LastPost />
+      <Content>
+        {!!load ? (
+          <ActivityIndicator color="#000" />
+        ) : (
+          <>
+            <Galery images={images}></Galery>
+            {session.fistTime && (
+              <FloatImage
+                image={imagesBox}
+                visible={visible}
+                setVisible={setVisible}
+              />
+            )}
+          </>
+        )}
+      </Content>
+      <Footer></Footer>
+    </Container>
   );
 }

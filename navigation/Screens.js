@@ -10,6 +10,7 @@ import Home from "../screens/Home";
 import Onboarding from "../screens/Onboarding";
 import Intro from "../screens/Intro";
 import Profile from "../screens/Profile";
+import GuestProfile from "../screens/GuestProfile";
 import Register from "../screens/Register";
 import Login from "../screens/Login";
 import Articles from "../screens/Articles";
@@ -136,6 +137,23 @@ const AppStack = createStackNavigator(
         headerTransparent: true
       })
     },
+    GuestProfile: {
+      screen: GuestProfile,
+      navigationOptions: ({ navigation }) => ({
+        headerLeft: (
+          <Feather
+            size={24}
+            color="#FFF"
+            style={{ marginLeft: 10 }}
+            name={"chevron-left"}
+            onPress={() => {
+              navigation.goBack();
+            }}
+          />
+        ),
+        headerTransparent: true
+      })
+    },
     Articles: {
       screen: Articles,
       navigationOptions: ({ navigation }) => ({
@@ -157,8 +175,8 @@ const AppStack = createStackNavigator(
         headerTransparent: true
       })
     }
-  },
-  { initialRouteName: "Login" }
+  }
+  // { initialRouteName: "Login" }
 );
 
 const AppContainer = createAppContainer(AppStack);

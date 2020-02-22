@@ -38,7 +38,7 @@ export default function Search() {
     <Container>
       <ContainerInput>
         <TextInput
-          placeholder="Search User"
+          placeholder="Search"
           onChangeText={text => {
             setSearch(text);
           }}

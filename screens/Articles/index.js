@@ -14,15 +14,9 @@ import { articles } from "../../constants";
 function Articles({ navigation }) {
   const item = navigation.getParam("item");
   const gestures = useRef(null);
-  useEffect(() => {
-    (!item || !articles[item.id]) && navigation.navigate("Home");
-  }, []);
-
-  console.log(item);
-
   return (
     <Container>
-      <Header>{item.title}</Header>
+      <Header>{!!item.title ? item.title : item.name}</Header>
       <Content>
         <KeyboardAwareScrollView
           enableAutomaticScroll={true}
@@ -45,7 +39,7 @@ function Articles({ navigation }) {
               });
             }}
           >
-            <Image source={item.image}></Image>
+            <Image source={!!item.image ? item.image : item.path}></Image>
           </Gestures>
           <Author>@{item.user.username}</Author>
           <ItemsContent

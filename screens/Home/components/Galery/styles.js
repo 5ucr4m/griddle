@@ -8,18 +8,25 @@ export const Container = styled.View`
 export const User = styled.Text`
   margin-left: 5px;
   font-weight: bold;
-  font-size: 16px;
-  margin-top: 3px;
+  font-size: 12px;
 `;
 
 export const Title = styled.Text`
   margin-left: 5px;
-  font-size: 16px;
-  margin-top: 5px;
+  font-weight: bold;
+  font-size: 12px;
 `;
 
 export const Comments = styled.Text`
   margin-left: 5px;
+  font-weight: bold;
   font-size: 13px;
-  margin-top: 4px;
+`;
+
+export const Emots = styled.View`
+  flex-direction: row;
+  height: 20px;
+  width: 100%;
+  align-items: center;
+  margin: 3px 5px 2px;
 `;

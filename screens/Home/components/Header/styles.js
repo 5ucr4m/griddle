@@ -1,16 +1,19 @@
 import styled, { css } from "styled-components/native";
 import { LinearGradient } from "expo-linear-gradient";
+import { Dimensions } from "react-native";
+
+const { width, height } = Dimensions.get("window");
 
 export const Container = styled(LinearGradient).attrs({
   colors: ["#332286", "#6D4FB2"]
 })`
   flex-direction: row;
   width: 100%;
-  height: 87px;
+  height: ${height * 0.055}px;
   justify-content: space-between;
   align-items: center;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: ${width * 0.028}px;
+  padding-right: ${width * 0.028}px;
   border-bottom-width: 2px;
   border-bottom-color: #c56fd7;
   margin-top: 0;

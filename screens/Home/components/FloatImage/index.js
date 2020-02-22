@@ -107,7 +107,7 @@ function FloatImage({ image, visible = false, setVisible }) {
           />
           <Info>
             <User>@{image.user.username}</User>
-            <Title>{image.title.substr(0, 15)}</Title>
+            {!!image.title && <Title>{image.title.substr(0, 15)}</Title>}
             <Comments>{image.comment.length} Comments</Comments>
             <Comments>
               {formatDistanceToNow(new Date(image.time.substr(0, 19)))}

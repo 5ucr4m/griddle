@@ -8,9 +8,7 @@ import { Container, Text } from "./styles";
 function Header({ children, navigation }) {
   return (
     <Container>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Home", { refresh: true })}
-      >
+      <TouchableOpacity onPress={() => navigation.goBack()}>
         <Feather name="chevron-left" size={20} color="#999"></Feather>
       </TouchableOpacity>
       <Text numberOfLines={1}>{children}</Text>

@@ -14,10 +14,10 @@ import { Block, Text, theme, Button } from "galio-framework";
 import { articles, Images, argonTheme } from "../constants";
 import { StackActions, NavigationActions } from "react-navigation";
 
-const resetAction = StackActions.reset({
-  index: 0,
-  actions: [NavigationActions.navigate({ routeName: "Home" })]
-});
+// const resetAction = StackActions.reset({
+//   index: 0,
+//   actions: [NavigationActions.navigate({ routeName: "Home" })]
+// });
 
 const { width, height } = Dimensions.get("screen");
 
@@ -36,6 +36,7 @@ const categories = [
 
 class Articles extends React.Component {
   renderProduct = (item, index) => {
+    console.log("test");
     const { navigation } = this.props;
 
     return (
@@ -75,7 +76,7 @@ class Articles extends React.Component {
       this.props.navigation.getParam("item") == undefined ||
       articles[this.props.navigation.getParam("item").id] == undefined
     ) {
-      this.props.navigation.navigate("Home");
+      // this.props.navigation.navigate("Home");
     } else {
       return (
         <SafeAreaView>
@@ -177,7 +178,7 @@ class Articles extends React.Component {
           style={(styles.group, { paddingBottom: 60, paddingTop: 12 })}
         >
           <TouchableWithoutFeedback
-            onPress={() => this.props.navigation.dispatch(resetAction)}
+          // onPress={() => this.props.navigation.dispatch(resetAction)}
           >
             <Text bold size={22} style={styles.title}>
               {"Selfie: " + this.props.navigation.getParam("item").title}

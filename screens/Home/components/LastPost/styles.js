@@ -1,24 +1,30 @@
 import styled from "styled-components/native";
+import { Dimensions } from "react-native";
+
+const { height, width } = Dimensions.get("window");
 
 export const Container = styled.View`
   height: 110px;
   background: #fff;
-  padding-left: 13px;
+  padding: 0 4%;
 `;
 
-export const Item = styled.View`
-  width: 76px;
+export const Item = styled.TouchableOpacity`
+  width: ${width * 0.2}px;
   align-items: center;
-  margin-left: 13px;
+  margin-right: ${width * 0.033}px;
 `;
+
 export const Image = styled.Image`
-  width: 76px;
-  height: 76px;
-  border-radius: 40px;
+  width: ${width * 0.2}px;
+  height: ${width * 0.2}px;
+  border-radius: ${width * 0.4}px;
 `;
+
 export const Name = styled.Text`
   font-style: normal;
   font-weight: bold;
-  font-size: 13px;
-  margin-top: 8px;
+  font-size: 11px;
+  margin-top: ${height * 0.01}px;
+  margin-bottom: ${height * 0.016}px;
 `;
