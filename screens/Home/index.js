@@ -10,6 +10,7 @@ import Header from "./components/Header";
 import Search from "./components/Search";
 import LastPost from "./components/LastPost";
 import Footer from "./components/Footer";
+import FloatFooter from "./components/FloatFooter";
 import Galery from "./components/Galery";
 import FloatImage from "./components/FloatImage";
 
@@ -76,6 +77,7 @@ export default function Home() {
       <StatusBar barStyle="light-content" />
       <Header />
       <Search />
+      {!session.fistTime && <FloatFooter />}
       <LastPost />
       <Content>
         {!!load ? (
@@ -93,7 +95,8 @@ export default function Home() {
           </>
         )}
       </Content>
-      <Footer></Footer>
+
+      {/* <Footer></Footer> */}
     </Container>
   );
 }
