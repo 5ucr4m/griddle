@@ -8,7 +8,7 @@ import { Container, Content } from "./styles";
 import { Card } from "../../components";
 
 import Header from "../Home/components/Header";
-import Footer from "../Home/components/Footer";
+import Footer from "../Home/components/FloatFooter";
 
 const { height, width } = Dimensions.get("screen");
 
