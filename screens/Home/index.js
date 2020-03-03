@@ -24,10 +24,12 @@ console.disableYellowBox = true;
 export default function Home() {
   const dispatch = useDispatch();
   const [visible, setVisible] = useState(true);
-  const images = useSelector(state => shuffleArray(state.pictures.data));
-  const imagesBox = useSelector(state => state.pictures.data[0]);
+  const images = useSelector(state => state.pictures.data);
+  const imagesBox = useSelector(state => state.pictures.lastPick);
   const load = useSelector(state => state.pictures.loading);
   const session = useSelector(state => state.session);
+
+  console.log(imagesBox);
 
   useEffect(() => {
     registerForPushNotifications();

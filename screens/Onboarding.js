@@ -7,7 +7,9 @@ import {
   Image,
   StyleSheet,
   StatusBar,
-  Dimensions
+  Dimensions,
+  TouchableOpacity,
+  Text
 } from "react-native";
 
 import { Block, Button, theme } from "galio-framework";
@@ -83,15 +85,15 @@ class Onboarding extends React.Component {
                 >
                   Login
                 </Button>
-                {/* <Block style={styles.subTitle}>
+                <Block style={styles.subTitle}>
                   <TouchableOpacity
                     onPress={() => navigation.navigate("Forgot")}
                   >
-                    <Text color="#FFFFAA" size={14}>
+                    <Text style={{ color: "#FFFFAA", fontSize: 14 }}>
                       Forgot user name/Password?
                     </Text>
                   </TouchableOpacity>
-                </Block> */}
+                </Block>
               </Block>
             </Block>
             <Block center style={{ flex: 1, flexDirection: "row" }}>

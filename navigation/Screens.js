@@ -16,6 +16,7 @@ import Login from "../screens/Login";
 import Articles from "../screens/Articles";
 import CameraScreen from "../screens/CameraScreen";
 import ForgotScreen from "../screens/Forgot";
+import NewPassScreen from "../screens/NewPass";
 import PostImageScreen from "../screens/PostImage";
 import NotificationScreen from "../screens/Notification";
 
@@ -66,12 +67,51 @@ const AppStack = createStackNavigator(
     PostImage: {
       screen: PostImageScreen,
       navigationOptions: ({ navigation }) => ({
+        headerLeft: (
+          <Feather
+            size={24}
+            color="#FFF"
+            style={{ marginLeft: 10 }}
+            name={"chevron-left"}
+            onPress={() => {
+              navigation.goBack();
+            }}
+          />
+        ),
         headerTransparent: true
       })
     },
     Forgot: {
       screen: ForgotScreen,
       navigationOptions: ({ navigation }) => ({
+        headerLeft: (
+          <Feather
+            size={24}
+            color="#FFF"
+            style={{ marginLeft: 10 }}
+            name={"chevron-left"}
+            onPress={() => {
+              navigation.goBack();
+            }}
+          />
+        ),
+        headerTransparent: true
+      })
+    },
+    NewPass: {
+      screen: NewPassScreen,
+      navigationOptions: ({ navigation }) => ({
+        headerLeft: (
+          <Feather
+            size={24}
+            color="#FFF"
+            style={{ marginLeft: 10 }}
+            name={"chevron-left"}
+            onPress={() => {
+              navigation.goBack();
+            }}
+          />
+        ),
         headerTransparent: true
       })
     },

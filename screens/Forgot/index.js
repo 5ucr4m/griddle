@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Block, Text } from "galio-framework";
 import { StatusBar } from "react-native";
+import { withNavigation } from "react-navigation";
 import { Images, argonTheme } from "../../constants";
 import { Button, Input, Icon } from "../../components";
 
@@ -9,11 +10,16 @@ import {
   ImageBackground,
   Content,
   ContentHeader,
-  InputContainer,
-  ButtonContainer
+  InputContainer
 } from "./styles";
 
-export default function Forgot() {
+function Forgot({ navigation }) {
+  const [email, setEmail] = useState("teste@gmail.com");
+
+  function submit() {
+    navigation.navigate("NewPass");
+  }
+
   return (
     <Container>
       <Block flex middle>
@@ -26,7 +32,7 @@ export default function Forgot() {
           <InputContainer>
             <Input
               borderless
-              placeholder="Email ---"
+              placeholder="Email"
               autoCapitalize="none"
               iconContent={
                 <Icon
@@ -37,12 +43,12 @@ export default function Forgot() {
                   style={{ marginRight: 12 }}
                 />
               }
-              onChangeText={() => {}}
-              value="teste@gmail.com"
+              onChangeText={text => setEmail(text)}
+              value={email}
             />
           </InputContainer>
 
-          <Button color="primary" onPress={() => {}} style={{ width: "80%" }}>
+          <Button color="primary" onPress={submit} style={{ width: "80%" }}>
             <Text bold size={14} color={argonTheme.COLORS.WHITE}>
               Send
             </Text>
@@ -52,3 +58,5 @@ export default function Forgot() {
     </Container>
   );
 }
+
+export default withNavigation(Forgot);

@@ -15,11 +15,11 @@ db.transaction(tx => {
 });
 
 async function getAll() {
-  const url = `/pictures`;
+  const url = `/pictures/app`;
   try {
     let x = 0;
     const response = await api.get(url);
-    const resp = response.data.docs.map((a, index) => ({
+    const resp = response.data.map((a, index) => ({
       title: a.name,
       image: a.path,
       uri: a.path,
