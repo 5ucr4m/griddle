@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { Image } from "react-native";
+import { Image, PanResponder } from "react-native";
 import { withNavigation } from "react-navigation";
 import MasonryList from "react-native-masonry-list";
 import { formatDistanceToNow } from "date-fns";
@@ -12,7 +12,7 @@ import { Block } from "galio-framework";
 
 import { Container, User, Title, Comments, Emots } from "./styles";
 
-function Galery({ navigation, images }) {
+function Galery({ navigation, images, ...props }) {
   function renderPost(item) {
     navigation.navigate("Articles", {
       item: item,
@@ -36,6 +36,7 @@ function Galery({ navigation, images }) {
 
   return (
     <Container>
+      {/* <Container> */}
       <MasonryList
         onPressImage={item => {
           renderPost(item);

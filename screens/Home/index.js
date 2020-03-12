@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ActivityIndicator, StatusBar } from "react-native";
+import { View, ActivityIndicator, StatusBar, PanResponder } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import * as Permissions from "expo-permissions";
 import { Notifications } from "expo";
@@ -16,8 +16,6 @@ import FloatImage from "./components/FloatImage";
 
 import { loading as _loading } from "../../store/modules/pictures/actions";
 import { addNoty } from "../../store/modules/notify/actions";
-
-import { shuffleArray } from "../../helpers/sortArray";
 
 console.disableYellowBox = true;
 
@@ -97,7 +95,6 @@ export default function Home() {
           </>
         )}
       </Content>
-
       {/* <Footer></Footer> */}
     </Container>
   );

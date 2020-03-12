@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import Gestures from "react-native-easy-gestures";
-
 import Header from "./components/header";
 import Image from "./components/image";
 import Comments from "./components/comments";
@@ -9,6 +8,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 
 import { Container, Content, ItemsContent, Author } from "./styles";
 
+import AbuseModal from "../../components/AbuseModal";
 import { articles } from "../../constants";
 
 function Articles({ navigation }) {
@@ -16,7 +16,7 @@ function Articles({ navigation }) {
   const gestures = useRef(null);
   return (
     <Container>
-      <Header>{!!item.title ? item.title : item.name}</Header>
+      <Header>{!!item.title ? item.title : item.name} ---</Header>
       <Content>
         <KeyboardAwareScrollView
           enableAutomaticScroll={true}
@@ -56,6 +56,7 @@ function Articles({ navigation }) {
           </ItemsContent>
         </KeyboardAwareScrollView>
       </Content>
+      <AbuseModal />
     </Container>
   );
 }
