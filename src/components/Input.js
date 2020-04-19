@@ -17,7 +17,7 @@ class ArInput extends React.Component {
       success && styles.success,
       error && styles.error,
       width && { width },
-      { ...this.props.style }
+      { ...this.props.style },
     ];
 
     return (
@@ -44,13 +44,13 @@ class ArInput extends React.Component {
 ArInput.defaultProps = {
   shadowless: false,
   success: false,
-  error: false
+  error: false,
 };
 
 ArInput.propTypes = {
   shadowless: PropTypes.bool,
   success: PropTypes.bool,
-  error: PropTypes.bool
+  error: PropTypes.bool,
 };
 
 const styles = StyleSheet.create({
@@ -58,21 +58,21 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     borderColor: argonTheme.COLORS.BORDER,
     height: 44,
-    backgroundColor: "#FFFFFF"
+    backgroundColor: "#FFFFFF",
   },
   success: {
-    borderColor: argonTheme.COLORS.INPUT_SUCCESS
+    borderColor: argonTheme.COLORS.INPUT_SUCCESS,
   },
   error: {
-    borderColor: argonTheme.COLORS.INPUT_ERROR
+    borderColor: argonTheme.COLORS.INPUT_ERROR,
   },
   shadow: {
     shadowColor: argonTheme.COLORS.BLACK,
     shadowOffset: { width: 0, height: 1 },
     shadowRadius: 2,
     shadowOpacity: 0.05,
-    elevation: 2
-  }
+    elevation: 2,
+  },
 });
 
 export default ArInput;

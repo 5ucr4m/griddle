@@ -62,7 +62,7 @@ function Home() {
             <Button
               style={styles.button}
               color={argonTheme.COLORS.SECONDARY}
-              onPress={() => navigation.navigate("Account")}
+              onPress={() => navigation.navigate("Register")}
               textStyle={{ color: argonTheme.COLORS.BLACK }}
             >
               Sign Up

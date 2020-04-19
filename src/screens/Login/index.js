@@ -41,7 +41,6 @@ function Login() {
         });
 
         const { token: appToken, user } = data;
-
         dispatch(
           SessionActions.addSession(user.id, appToken, user.username, user)
         );
@@ -65,11 +64,8 @@ function Login() {
       );
     }
 
-    if (status === "fail") {
-      messageFadeIn();
-    }
+    if (status === "fail") messageFadeIn();
 
-    console.log(data);
     setLoading(false);
   }
 
