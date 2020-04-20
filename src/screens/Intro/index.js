@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import AppIntroSlider from "react-native-app-intro-slider";
 import Images from "../../constants/Images";
+import * as SecureStore from "expo-secure-store";
 
 const styles = StyleSheet.create({
   mainContent: {
@@ -58,8 +59,9 @@ const slides = [
 ];
 
 class Intro extends React.Component {
-  _onDone = () => {
+  _onDone = async () => {
     const { navigate } = this.props.navigation;
+    await SecureStore.setItemAsync("griddle-first", "no");
     navigate("Home");
   };
 

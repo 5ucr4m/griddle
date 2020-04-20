@@ -1,16 +1,29 @@
+import { persistStore, persistReducer } from "redux-persist";
+import createSecureStore from "redux-persist-expo-securestore";
+
 import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
 
 import rootReducer from "./modules/rootReducer";
 import rootSaga from "./modules/rootSaga";
 
-const sagaMiddleware = createSagaMiddleware();
+const storage = createSecureStore();
 
-const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+const persistConfig = {
+  key: "griddle",
+  storage,
+  whitelist: ["session", "user"],
+};
+
+const sagaMiddleware = createSagaMiddleware();
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const store = createStore(persistedReducer, applyMiddleware(sagaMiddleware));
+const persistor = persistStore(store);
 
 sagaMiddleware.run(rootSaga);
 
 console.log("store criada e instanciada ...: ", store.getState());
 
-export { store };
+export { store, persistor };
 export default store;

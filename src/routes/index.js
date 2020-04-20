@@ -1,7 +1,8 @@
-import * as React from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import * as SecureStore from "expo-secure-store";
 
 import HomeScreen from "../screens/Home";
 import LoginScreen from "../screens/Login";
@@ -21,8 +22,25 @@ const defaultOptions = {
 };
 
 function SessionStackScreens() {
+  const [loading, setLoading] = React.useState(false);
+  const [isFirstTime, setIsFirstTime] = React.useState(true);
+
+  React.useEffect(() => {
+    setLoading(true);
+    async function load() {
+      const response = await SecureStore.getItemAsync("griddle-first");
+      setIsFirstTime(!response);
+      setLoading(false);
+    }
+    load();
+  }, []);
+
+  if (loading) {
+    return <></>;
+  }
+
   return (
-    <SessionStack.Navigator>
+    <SessionStack.Navigator initialRouteName={isFirstTime ? "Intro" : "Home"}>
       <SessionStack.Screen
         name="Intro"
         component={IntroScreen}
@@ -65,7 +83,11 @@ function SessionStackScreens() {
 function AuthStackScreens() {
   return (
     <AuthStack.Navigator>
-      <AuthStack.Screen name="Main" component={MainScreen} />
+      <AuthStack.Screen
+        name="Main"
+        component={MainScreen}
+        options={defaultOptions}
+      />
     </AuthStack.Navigator>
   );
 }

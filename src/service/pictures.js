@@ -1,18 +1,6 @@
 import api from "./api";
-import * as SQLite from "expo-sqlite";
-
-const db = SQLite.openDatabase("griddledb.db");
 
 let user_id = null;
-
-db.transaction((tx) => {
-  tx.executeSql("SELECT * FROM user;", [], (tx, results) => {
-    for (let i = 0; i < results.rows.length; ++i) {
-      user_id = JSON.parse(results.rows.item(i).user).id;
-      return true;
-    }
-  });
-});
 
 async function getAll() {
   const url = `/pictures/app`;
