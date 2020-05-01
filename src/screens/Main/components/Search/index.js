@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 import {
   Container,
@@ -9,8 +10,10 @@ import {
   TextNoResult,
 } from "./styles";
 import api from "../../../../service/api";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function Search() {
+  const navigation = useNavigation();
   const [search, setSearch] = useState("");
   const [visible, setVisible] = useState(false);
   const [resultUsers, setResultUsers] = useState([]);
@@ -46,9 +49,20 @@ export default function Search() {
         <Feather name="search" size={18} color="#ACACAC" />
       </ContainerInput>
       <SearchResult visible={visible}>
-        {resultUsers.map((user) => (
-          <Text>@{user.username}</Text>
-        ))}
+        {resultUsers.map((user) => {
+          const { profile, ...data } = user;
+          return (
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate("GuestProfile", {
+                  refUser: { data, profile },
+                })
+              }
+            >
+              <Text>@{user.username}</Text>
+            </TouchableOpacity>
+          );
+        })}
         {resultUsers.length === 0 && (
           <TextNoResult>--- No results ---</TextNoResult>
         )}

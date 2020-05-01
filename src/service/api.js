@@ -3,9 +3,8 @@ import axios from "axios";
 import store from "../store";
 
 const api = axios.create({
-  //   baseURL: "http://67.227.214.144:3010/"
-  // baseURL: "http://api.mv-ti.com.br:3010/",
-  baseURL: "http://192.168.15.2:3010/",
+  // baseURL: "http://67.227.214.144:3010/",
+  baseURL: "http://192.168.15.9:3010/",
 });
 
 api.interceptors.request.use(async (config) => {

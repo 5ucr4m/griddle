@@ -7,6 +7,7 @@ export const Container = styled.View`
   padding-top: 5px;
   padding-bottom: 7px;
   width: 100%;
+  align-items: center;
   background-color: #fff;
   z-index: 50;
 `;
@@ -14,7 +15,6 @@ export const Container = styled.View`
 export const ContainerInput = styled.View`
   height: 30px;
   width: 64.5%;
-  margin-left: 23%;
   border-width: 2px;
   border-color: #d2cecf;
   border-radius: 20px;

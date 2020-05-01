@@ -44,6 +44,7 @@ function Home() {
       const { status: existingStatus } = await Permissions.getAsync(
         Permissions.NOTIFICATIONS
       );
+
       let finalStatus = existingStatus;
       if (existingStatus !== "granted") {
         const { status } = await Permissions.askAsync(
@@ -52,6 +53,7 @@ function Home() {
         finalStatus = status;
       }
 
+      console.log(finalStatus);
       if (finalStatus !== "granted") {
         return;
       }
@@ -69,7 +71,7 @@ function Home() {
 
       Notifications.addListener(_handleNotification);
     } catch (e) {
-      // console.log(e);
+      console.log(e);
     }
   };
 

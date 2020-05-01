@@ -12,12 +12,12 @@ import { useNavigation } from "@react-navigation/native";
 import { Container, Content, Button } from "./styles";
 
 import HomeIcon from "../../../../../assets/icons/home.png";
-import EmailIcon from "../../../../../assets/icons/email.png";
+import WinnerIcon from "../../../../../assets/icons/winner_icon64.png";
 import CamIcon from "../../../../../assets/icons/cam.png";
-import QuestionIcon from "../../../../../assets/icons/question.png";
+import InfoIcon from "../../../../../assets/icons/info_icon64.png";
 import UserIcon from "../../../../../assets/icons/user.png";
-import XIcon from "../../../../../assets/icons/x.png";
-import PlusIcon from "../../../../../assets/icons/plus.png";
+import XIcon from "../../../../../assets/icons/open_icon64.png";
+import PlusIcon from "../../../../../assets/icons/close_icon64.png";
 
 const { width } = Dimensions.get("screen");
 
@@ -116,11 +116,11 @@ function FloatFooter() {
   return (
     <Container>
       <Content>
-        <Button onPress={visible ? handleClose : handleOpen}>
+        <Button noBg onPress={visible ? handleClose : handleOpen}>
           {visible ? (
-            <Image source={XIcon} style={{ width: 30, height: 30 }} />
+            <Image source={XIcon} style={{ width: 65, height: 65 }} />
           ) : (
-            <Image source={PlusIcon} style={{ width: 30, height: 30 }} />
+            <Image source={PlusIcon} style={{ width: 65, height: 65 }} />
           )}
         </Button>
         <Animated.View
@@ -129,20 +129,20 @@ function FloatFooter() {
             { left: positionX, bottom: positionY, opacity: opacity },
           ]}
         >
-          <TouchableOpacity onPress={() => nav("Home")}>
+          <TouchableOpacity onPress={() => nav("Main")}>
             <Image source={HomeIcon} style={{ width: 24, height: 24 }} />
           </TouchableOpacity>
         </Animated.View>
-        <Animated.View
+        {/* <Animated.View
           style={[
             styles.iconBase,
             { left: halfPositionX, bottom: halfPositionY, opacity: opacity },
           ]}
         >
           <TouchableOpacity onPress={() => console.log("press")}>
-            <Image source={EmailIcon} style={{ width: 24, height: 24 }} />
+            <Image source={WinnerIcon} style={{ width: 40, height: 40 }} />
           </TouchableOpacity>
-        </Animated.View>
+        </Animated.View> */}
         <Animated.View
           style={[
             styles.iconBase,
@@ -153,27 +153,30 @@ function FloatFooter() {
             },
           ]}
         >
-          <TouchableOpacity onPress={() => navigation.dispatch("PostImage")}>
-            <Image source={CamIcon} style={{ width: 24, height: 24 }} />
+          <TouchableOpacity onPress={() => nav("PostImage")}>
+            <Image source={CamIcon} style={{ width: 40, height: 40 }} />
           </TouchableOpacity>
         </Animated.View>
-        <Animated.View
+        {/* <Animated.View
           style={[
             styles.iconBase,
             { right: halfPositionX, bottom: halfPositionY, opacity: opacity },
           ]}
         >
           <TouchableOpacity onPress={() => nav("Notification")}>
-            <Image source={QuestionIcon} style={{ width: 24, height: 24 }} />
+            <Image source={InfoIcon} style={{ width: 40, height: 40 }} />
           </TouchableOpacity>
-        </Animated.View>
+        </Animated.View> */}
         <Animated.View
           style={[
             styles.iconBase,
             { right: positionX, bottom: positionY, opacity: opacity },
           ]}
         >
-          <TouchableOpacity onPress={() => nav("Profile")}>
+          <TouchableOpacity
+            onPress={() => nav("Profile")}
+            style={{ zIndex: 98 }}
+          >
             <Image source={UserIcon} style={{ width: 24, height: 24 }} />
           </TouchableOpacity>
         </Animated.View>
@@ -191,7 +194,7 @@ const styles = StyleSheet.create({
     height: objWidth,
     borderRadius: objWidth,
     backgroundColor: "rgba(51, 34, 134, 0.6)",
-    zIndex: 98,
+    zIndex: 50,
     shadowColor: "#000",
     shadowOffset: { width: 10, height: 10 },
     justifyContent: "center",

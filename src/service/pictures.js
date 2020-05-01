@@ -1,7 +1,5 @@
 import api from "./api";
 
-let user_id = null;
-
 async function getAll() {
   const url = `/pictures/app`;
   try {
@@ -40,7 +38,7 @@ async function getComments(id) {
   return data;
 }
 
-async function addComment(picture_id, description) {
+async function addComment(picture_id, description, user_id) {
   const url = `/comments`;
   const dados = { user_id, picture_id, description };
 
@@ -63,7 +61,7 @@ async function getVotes(id) {
   return data;
 }
 
-async function addVotes(picture_id, type_vote = "like") {
+async function addVotes(picture_id, type_vote = "like", user_id) {
   const url = `/votes`;
   const dados = { user_id, picture_id, kind: "1", type_vote };
   try {

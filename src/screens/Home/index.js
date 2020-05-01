@@ -10,6 +10,9 @@ import {
   Text,
 } from "react-native";
 
+import * as Permissions from "expo-permissions";
+import { Notifications } from "expo";
+
 import { Block, Button, theme } from "galio-framework";
 import argonTheme from "../../constants/Theme";
 import Images from "../../constants/Images";

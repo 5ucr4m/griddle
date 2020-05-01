@@ -6,7 +6,7 @@ export const Container = styled(Animated.View)`
   flex: 1;
   width: 100%;
   position: absolute;
-  top: -163;
+  top: -163px;
   left: 0;
   right: 0;
   bottom: 0;

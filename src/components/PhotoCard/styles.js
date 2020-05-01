@@ -5,36 +5,39 @@ const { width } = Dimensions.get("window");
 
 export const Container = styled.View`
   width: ${width}px;
-  height: 500px;
   background-color: #fff;
-  margin-bottom: 15px;
 `;
 
 export const Author = styled.Text`
-  font-size: 15px;
+  font-size: 18px;
   font-weight: bold;
   background-color: #fff;
 `;
 
 export const Title = styled.Text`
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: bold;
   background-color: #fff;
 `;
 
 export const Comments = styled.Text`
-  margin-left: 5px;
   font-weight: bold;
-  font-size: 13px;
+  font-size: 16px;
+  height: 18px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2px;
 `;
 
 export const IconsWrapper = styled.View`
   position: absolute;
   background: #fff;
-  width: 80%;
+  width: 90%;
   bottom: 100px;
   left: 20px;
   border-radius: 8px;
   padding: 10px 0px;
+  z-index: 99;
 `;
 
 export const Divider = styled.View`
@@ -51,4 +54,5 @@ export const Emots = styled.View`
   width: 80%;
   align-items: center;
   margin: 3px 5px 2px;
+  height: 35px;
 `;

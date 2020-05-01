@@ -12,6 +12,11 @@ import RegisterScreen from "../screens/Register";
 import IntroScreen from "../screens/Intro";
 
 import MainScreen from "../screens/Main";
+import ProfileScreen from "../screens/Profile";
+import ArticlesScreen from "../screens/Articles";
+import NotificationScreen from "../screens/Notification";
+import PostImageScreen from "../screens/PostImage";
+import GuestProfileScreen from "../screens/GuestProfile";
 
 const RootStack = createStackNavigator();
 const AuthStack = createStackNavigator();
@@ -86,6 +91,32 @@ function AuthStackScreens() {
       <AuthStack.Screen
         name="Main"
         component={MainScreen}
+        options={defaultOptions}
+      />
+      <AuthStack.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={defaultOptions}
+      />
+      <AuthStack.Screen
+        name="Articles"
+        component={ArticlesScreen}
+        options={defaultOptions}
+      />
+      <AuthStack.Screen
+        name="Notification"
+        component={NotificationScreen}
+        options={defaultOptions}
+      />
+      <AuthStack.Screen
+        name="PostImage"
+        component={PostImageScreen}
+        options={defaultOptions}
+      />
+
+      <AuthStack.Screen
+        name="GuestProfile"
+        component={GuestProfileScreen}
         options={defaultOptions}
       />
     </AuthStack.Navigator>
