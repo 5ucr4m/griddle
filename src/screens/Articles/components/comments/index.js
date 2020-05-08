@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Alert } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { Block } from "galio-framework";
+import dateDistance from "../../../../helpers/dateDistance";
 
 import pitureService from "../../../../service/pictures";
 import pictureActions from "../../../../store/modules/pictures/actions";
@@ -75,13 +76,14 @@ export default function Comments({ id }) {
           )}
         </Block>
       </InputContainer>
-      {!!comments.total && <Count>You have {comments.total} comments</Count>}
+      {!!comments.total && <Count>{comments.total} comments</Count>}
       {!!comments.docs &&
         comments.docs.map((comment) => (
           <CommentContainer key={comment.id}>
             <Comment>
               <CommentUser>@{comment.user.username}: </CommentUser>
               {comment.description}
+              {` - ${dateDistance(new Date(comment.createdAt))}`}
             </Comment>
           </CommentContainer>
         ))}

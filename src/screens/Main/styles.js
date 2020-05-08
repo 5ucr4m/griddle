@@ -8,9 +8,10 @@ export const Container = styled.SafeAreaView`
 `;
 
 export const Wrapper = styled(LinearGradient).attrs({
-  colors: ["#332286", "#ffffff"]
+  colors: ["#332286", "#ffffff"],
 })`
   flex: 1;
+  z-index: 99;
 `;
 
 export const Content = styled.View`

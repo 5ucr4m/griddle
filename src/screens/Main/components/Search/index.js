@@ -8,11 +8,12 @@ import {
   SearchResult,
   Text,
   TextNoResult,
+  Wrapper,
 } from "./styles";
 import api from "../../../../service/api";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-export default function Search() {
+export default function Search({ show }) {
   const navigation = useNavigation();
   const [search, setSearch] = useState("");
   const [visible, setVisible] = useState(false);
@@ -32,11 +33,6 @@ export default function Search() {
     loadUsers(search);
   }, [search]);
 
-  useEffect(() => {
-    console.log("mudou");
-    console.log(search);
-  });
-
   return (
     <Container>
       <ContainerInput>
@@ -48,25 +44,30 @@ export default function Search() {
         />
         <Feather name="search" size={18} color="#ACACAC" />
       </ContainerInput>
-      <SearchResult visible={visible}>
-        {resultUsers.map((user) => {
-          const { profile, ...data } = user;
-          return (
-            <TouchableOpacity
-              onPress={() =>
-                navigation.navigate("GuestProfile", {
-                  refUser: { data, profile },
-                })
-              }
-            >
-              <Text>@{user.username}</Text>
-            </TouchableOpacity>
-          );
-        })}
-        {resultUsers.length === 0 && (
-          <TextNoResult>--- No results ---</TextNoResult>
-        )}
-      </SearchResult>
+      {visible && (
+        <Wrapper>
+          <SearchResult>
+            {resultUsers.map((user) => {
+              const { profile, ...data } = user;
+              return (
+                <TouchableOpacity
+                  key={user.username}
+                  onPress={() =>
+                    navigation.navigate("GuestProfile", {
+                      refUser: { data, profile },
+                    })
+                  }
+                >
+                  <Text>@{user.username}</Text>
+                </TouchableOpacity>
+              );
+            })}
+            {resultUsers.length === 0 && (
+              <TextNoResult>--- No results ---</TextNoResult>
+            )}
+          </SearchResult>
+        </Wrapper>
+      )}
     </Container>
   );
 }

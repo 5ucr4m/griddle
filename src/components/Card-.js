@@ -119,7 +119,7 @@ function Card({ item, horizontal, full, ctaColor, imageStyle, handleTouch }) {
         </Block>
       </TouchableWithoutFeedback>
       {!options && (
-        <TouchableWithoutFeedback onPress={() => console.log("Touch")}>
+        <TouchableWithoutFeedback onPress={() => {}}>
           <Block flex space="between" style={styles.cardDescription}>
             <Text size={14} style={styles.cardTitle}>
               {item.title.length >= 10

@@ -1,11 +1,7 @@
 import React, { useState, useEffect, memo } from "react";
-import { Animated, StyleSheet, Image } from "react-native";
+import { Animated, StyleSheet } from "react-native";
 
-import cute_vote from "../../../../../assets/icons/cute_vote64.png";
-import crazy_vote from "../../../../../assets/icons/crazy_vote64.png";
-import funny_vote from "../../../../../assets/icons/funny_vote64.png";
-import smile_vote from "../../../../../assets/icons/smile_vote64.png";
-import hair_vote from "../../../../../assets/icons/hair_vote64.png";
+import CustomIcon from "../../../../components/PhotoCard/CustomIcon";
 
 function FloatIcon({ right, name, delay, onComplete }) {
   const [yAnimation] = useState(new Animated.Value(0));
@@ -33,7 +29,7 @@ function FloatIcon({ right, name, delay, onComplete }) {
   useEffect(() => {
     Animated.timing(yAnimation, {
       toValue: 350,
-      duration: 1500,
+      duration: 2000,
       delay: delay,
     }).start();
   }, []);
@@ -52,41 +48,10 @@ function FloatIcon({ right, name, delay, onComplete }) {
         },
       ]}
     >
-      {name === "cute_vote" && (
-        <Image
-          source={cute_vote}
-          resizeMode="cover"
-          style={{ width: 30, height: 30, marginRight: 15 }}
-        />
-      )}
-      {name === "crazy_vote" && (
-        <Image
-          source={crazy_vote}
-          resizeMode="cover"
-          style={{ width: 30, height: 30, marginRight: 15 }}
-        />
-      )}
-      {name === "funny_vote" && (
-        <Image
-          source={funny_vote}
-          resizeMode="cover"
-          style={{ width: 30, height: 30, marginRight: 15 }}
-        />
-      )}
-      {name === "smile_vote" && (
-        <Image
-          source={smile_vote}
-          resizeMode="cover"
-          style={{ width: 30, height: 30, marginRight: 15 }}
-        />
-      )}
-      {name === "hair_vote" && (
-        <Image
-          source={hair_vote}
-          resizeMode="cover"
-          style={{ width: 30, height: 30, marginRight: 15 }}
-        />
-      )}
+      <CustomIcon
+        type={name}
+        style={{ width: 30, height: 30, marginRight: 15 }}
+      />
     </Animated.View>
   );
 }

@@ -1,12 +1,7 @@
 import React, { useState } from "react";
-import {
-  Animated,
-  Dimensions,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-} from "react-native";
+import { Animated, Dimensions, StyleSheet, Image } from "react-native";
 
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 
 import { Container, Content, Button } from "./styles";
@@ -139,11 +134,12 @@ function FloatFooter() {
             { left: halfPositionX, bottom: halfPositionY, opacity: opacity },
           ]}
         >
-          <TouchableOpacity onPress={() => console.log("press")}>
+          <TouchableOpacity onPress={() => {}}>
             <Image source={WinnerIcon} style={{ width: 40, height: 40 }} />
           </TouchableOpacity>
         </Animated.View> */}
         <Animated.View
+          onPress={() => {}}
           style={[
             styles.iconBase,
             {
@@ -170,13 +166,15 @@ function FloatFooter() {
         <Animated.View
           style={[
             styles.iconBase,
-            { right: positionX, bottom: positionY, opacity: opacity },
+            {
+              right: positionX,
+              bottom: positionY,
+              opacity: opacity,
+              zIndex: 998,
+            },
           ]}
         >
-          <TouchableOpacity
-            onPress={() => nav("Profile")}
-            style={{ zIndex: 98 }}
-          >
+          <TouchableOpacity onPress={() => nav("Profile")}>
             <Image source={UserIcon} style={{ width: 24, height: 24 }} />
           </TouchableOpacity>
         </Animated.View>
@@ -194,7 +192,6 @@ const styles = StyleSheet.create({
     height: objWidth,
     borderRadius: objWidth,
     backgroundColor: "rgba(51, 34, 134, 0.6)",
-    zIndex: 50,
     shadowColor: "#000",
     shadowOffset: { width: 10, height: 10 },
     justifyContent: "center",

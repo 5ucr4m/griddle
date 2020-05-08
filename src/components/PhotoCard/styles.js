@@ -16,7 +16,6 @@ export const Author = styled.Text`
 
 export const Title = styled.Text`
   font-size: 16px;
-  font-weight: bold;
   background-color: #fff;
 `;
 

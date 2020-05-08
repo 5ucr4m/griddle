@@ -44,6 +44,7 @@ function SessionStackScreens() {
     return <></>;
   }
 
+  //
   return (
     <SessionStack.Navigator initialRouteName={isFirstTime ? "Intro" : "Home"}>
       <SessionStack.Screen

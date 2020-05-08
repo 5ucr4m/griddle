@@ -21,10 +21,6 @@ export default function PostImage() {
     pickImage();
   }, []);
 
-  useEffect(() => {
-    console.log(photo);
-  }, [photo]);
-
   async function pickImage() {
     try {
       await Permissions.askAsync(

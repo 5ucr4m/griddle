@@ -9,7 +9,7 @@ export const Container = styled.View`
   height: 100px;
   right: ${(width - 70) / 2}px;
   z-index: 99;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   justify-content: center;
   align-items: center;
 `;

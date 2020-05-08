@@ -103,6 +103,7 @@ export default function Forgot() {
               borderless
               placeholder="Confirm Password"
               autoCapitalize="none"
+              textContentType="newPassword"
               secureTextEntry={true}
               iconContent={
                 <Icon

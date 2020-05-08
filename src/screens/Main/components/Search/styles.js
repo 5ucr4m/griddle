@@ -1,7 +1,4 @@
 import styled from "styled-components/native";
-import { Dimensions } from "react-native";
-
-const { height } = Dimensions.get("window");
 
 export const Container = styled.View`
   padding-top: 5px;
@@ -29,12 +26,16 @@ export const TextInput = styled.TextInput`
   text-align: center;
 `;
 
+export const Wrapper = styled.View`
+  width: 100%;
+  flex: 1;
+`;
+
 export const SearchResult = styled.ScrollView`
-  ${(props) => !props.visible && "display: none"};
   position: absolute;
   top: 45px;
   width: 90%;
-  max-height: 200px;
+  /* max-height: 200px; */
   min-height: 40px;
   margin-left: 5%;
   border-width: 1px;

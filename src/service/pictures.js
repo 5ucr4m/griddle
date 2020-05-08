@@ -22,9 +22,7 @@ async function getAll() {
       time: a.createdAt,
     }));
     return resp;
-  } catch (err) {
-    console.log("getPicturesError: ", err.response);
-  }
+  } catch (err) {}
   return data;
 }
 
@@ -45,9 +43,7 @@ async function addComment(picture_id, description, user_id) {
   try {
     const { data } = await api.post(url, dados);
     return data;
-  } catch (err) {
-    // console.log("addCommentError: ", err.response);
-  }
+  } catch (err) {}
 }
 
 async function getVotes(id) {
@@ -55,9 +51,7 @@ async function getVotes(id) {
   try {
     const { data } = await api.get(url);
     return data;
-  } catch (err) {
-    // console.log("getVotesError: ", err.response);
-  }
+  } catch (err) {}
   return data;
 }
 
@@ -68,7 +62,7 @@ async function addVotes(picture_id, type_vote = "like", user_id) {
     const resp = await api.post(url, dados);
     return resp.data;
   } catch (err) {}
-  return data;
+  // return data;
 }
 
 export default {

@@ -38,9 +38,7 @@ class Card extends React.Component {
       .then((res) => {
         this.props.navigation.navigate("Main");
       })
-      .catch((error) => {
-        console.log("get data error:", error);
-      });
+      .catch((error) => {});
   };
 
   renderOptions = (item) => {
@@ -126,7 +124,7 @@ class Card extends React.Component {
           </Block>
         </TouchableWithoutFeedback>
         {!options && (
-          <TouchableWithoutFeedback onPress={() => console.log("Touch")}>
+          <TouchableWithoutFeedback onPress={() => {}}>
             <Block flex space="between" style={styles.cardDescription}>
               <Text size={14} style={styles.cardTitle}>
                 {item.title.length >= 10

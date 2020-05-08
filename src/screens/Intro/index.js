@@ -4,6 +4,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import AppIntroSlider from "react-native-app-intro-slider";
 import Images from "../../constants/Images";
 import * as SecureStore from "expo-secure-store";
+import Logo from "../../../assets/imgs/NewLogo.png";
 
 const styles = StyleSheet.create({
   mainContent: {
@@ -37,7 +38,7 @@ const slides = [
     text:
       "Be a rockstar! Griddle is the brand new way to show the entire planet how pretty you are...",
     icon: "ios-planet",
-    image: Images.LogoOnboarding,
+    image: Logo,
     colors: ["#63E2FF", "#B066FE"],
   },
   {
@@ -45,7 +46,7 @@ const slides = [
     title: "Griddle it!",
     text: "... or maybe how funny your selfies are.",
     icon: "ios-planet",
-    image: Images.LogoOnboarding,
+    image: Logo,
     colors: ["#A3A1FF", "#3A3897"],
   },
   {
@@ -53,7 +54,7 @@ const slides = [
     title: "Oh but...",
     text: "Please, don't climb any wall to take your selfies..",
     icon: "ios-planet",
-    image: Images.LogoOnboarding,
+    image: Logo,
     colors: ["#29ABE2", "#4F00BC"],
   },
 ];
@@ -78,7 +79,7 @@ class Intro extends React.Component {
       start={{ x: 0, y: 0.1 }}
       end={{ x: 0.1, y: 1 }}
     >
-      <Image source={props.item.image} />
+      <Image source={props.item.image} style={{ width: 100, height: 100 }} />
       <View>
         <Text style={styles.title}>{props.item.title}</Text>
         <Text style={styles.text}>{props.item.text}</Text>

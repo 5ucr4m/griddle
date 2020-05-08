@@ -87,13 +87,15 @@ function Mansory({ images, scrollOffset }) {
     <>
       <Container
         scrollEventThrottle={16}
-        onScroll={Animated.event([
-          {
-            nativeEvent: {
-              contentOffset: { y: scrollOffset },
+        onScroll={(evt) => {
+          Animated.event([
+            {
+              nativeEvent: {
+                contentOffset: { y: scrollOffset },
+              },
             },
-          },
-        ])}
+          ])(evt);
+        }}
       >
         {images.map((image, index) => (
           <PhotoCard

@@ -53,7 +53,6 @@ function Home() {
         finalStatus = status;
       }
 
-      console.log(finalStatus);
       if (finalStatus !== "granted") {
         return;
       }
@@ -65,14 +64,10 @@ function Home() {
           user_id: session.user_id,
           token_notification: token,
         });
-      } catch (e) {
-        // console.log(e);
-      }
+      } catch (e) {}
 
       Notifications.addListener(_handleNotification);
-    } catch (e) {
-      console.log(e);
-    }
+    } catch (e) {}
   };
 
   _handleNotification = (notification) => {
@@ -98,12 +93,12 @@ function Home() {
             }),
             opacity: scrollOffset.interpolate({
               inputRange: [0, 240],
-              outputRange: [1, 0.4],
+              outputRange: [1, 0.6],
               extrapolate: "clamp",
             }),
           }}
         >
-          <Header scrollOffset={scrollOffset} />
+          <Header />
           <Search />
           <LastPost />
         </Animated.View>

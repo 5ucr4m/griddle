@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useRoute } from "@react-navigation/native";
 import { ActivityIndicator, Text } from "react-native";
 import Modal from "react-native-modal";
 import api from "../../service/api";
+
 import {
   Container,
   Content,
@@ -35,8 +36,12 @@ function AbuseModal({ visible, close }) {
 
   return (
     <Container>
-      <Modal isVisible={visible} animationIn="slideInUp">
-        <Content>
+      <Modal isVisible={visible} animationIn="slideInUp" avoidKeyboard>
+        <Content
+          enableAutomaticScroll={true}
+          enableOnAndroid={true}
+          extraScrollHeight={50}
+        >
           <Title style={{ marginTop: 20 }}>Report Abuse!!</Title>
           <TextArea
             multiline={true}
@@ -44,6 +49,7 @@ function AbuseModal({ visible, close }) {
             returnKeyType="done"
             value={description}
             onChangeText={setDescription}
+            scrollEnabled={false}
           />
           <Button
             onPress={handleSubmitAbuse}
@@ -55,8 +61,13 @@ function AbuseModal({ visible, close }) {
               <Title style={{ fontSize: 13, color: "#fff" }}>Send</Title>
             )}
           </Button>
-          <CloseModal onPress={close} style={{ marginVertical: 5 }}>
-            <Text style={{ fontSize: 13 }}>Cancel</Text>
+          <CloseModal
+            onPress={close}
+            style={{ marginVertical: 5, backgroundColor: "#000" }}
+          >
+            <Text style={{ fontSize: 16, fontWeight: "bold", color: "#fff" }}>
+              X
+            </Text>
           </CloseModal>
         </Content>
       </Modal>

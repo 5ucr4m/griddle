@@ -5,12 +5,10 @@ async function getAll(user_id) {
   try {
     const response = await api.get(url);
     return { status: "success", data: response.data };
-  } catch (err) {
-    console.log("getNotificationError: ", err.response);
-  }
+  } catch (err) {}
   return data;
 }
 
 export default {
-  getAll
+  getAll,
 };

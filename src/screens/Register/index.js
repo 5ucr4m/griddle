@@ -15,10 +15,6 @@ export default function Register({ navigation }) {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
   function nextStep(returnData = null) {
     setStep(step + 1);
     if (!!returnData) {

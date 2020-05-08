@@ -36,28 +36,6 @@ function Articles() {
   function handleVotes() {
     if (item.vote.length > 0) {
       const array = item.vote.map((vt) => ({ id: vt.id, name: vt.type_vote }));
-      array.push({ id: Math.random(), name: "cute_vote" });
-      array.push({ id: Math.random(), name: "crazy_vote" });
-      array.push({ id: Math.random(), name: "cute_vote" });
-      array.push({ id: Math.random(), name: "funny_vote" });
-      array.push({ id: Math.random(), name: "hair_vote" });
-      array.push({ id: Math.random(), name: "hair_vote" });
-      array.push({ id: Math.random(), name: "funny_vote" });
-      array.push({ id: Math.random(), name: "crazy_vote" });
-      array.push({ id: Math.random(), name: "cute_vote" });
-      array.push({ id: Math.random(), name: "funny_vote" });
-      array.push({ id: Math.random(), name: "cute_vote" });
-      array.push({ id: Math.random(), name: "cute_vote" });
-      array.push({ id: Math.random(), name: "crazy_vote" });
-      array.push({ id: Math.random(), name: "cute_vote" });
-      array.push({ id: Math.random(), name: "funny_vote" });
-      array.push({ id: Math.random(), name: "hair_vote" });
-      array.push({ id: Math.random(), name: "hair_vote" });
-      array.push({ id: Math.random(), name: "funny_vote" });
-      array.push({ id: Math.random(), name: "crazy_vote" });
-      array.push({ id: Math.random(), name: "cute_vote" });
-      array.push({ id: Math.random(), name: "funny_vote" });
-      array.push({ id: Math.random(), name: "cute_vote" });
       setIcons(array);
     } else {
       setIcons([]);
@@ -65,7 +43,6 @@ function Articles() {
   }
 
   function renderEmots() {
-    console.log(item);
     return (
       <>
         {icons.map((icon) => (
@@ -104,9 +81,7 @@ function Articles() {
                 max: 3,
               }}
               onEnd={(event, styles) => {
-                gestures.current.reset((prevStyles) => {
-                  console.log(prevStyles);
-                });
+                gestures.current.reset((prevStyles) => {});
               }}
             >
               <Image source={!!item.image ? item.image : item.path}></Image>
@@ -142,6 +117,7 @@ function Articles() {
             <Comments id={item.picture_id} />
           </KeyboardAwareScrollView>
         </Content>
+
         <AbuseModal visible={visible} close={close} />
       </Container>
     </Background>

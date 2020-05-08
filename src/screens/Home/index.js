@@ -10,12 +10,10 @@ import {
   Text,
 } from "react-native";
 
-import * as Permissions from "expo-permissions";
-import { Notifications } from "expo";
-
 import { Block, Button, theme } from "galio-framework";
 import argonTheme from "../../constants/Theme";
 import Images from "../../constants/Images";
+import Logo from "../../../assets/imgs/NewLogo.png";
 
 const { height, width } = Dimensions.get("screen");
 
@@ -32,7 +30,7 @@ function Home() {
         />
       </Block>
       <Block center>
-        <Image source={Images.LogoOnboarding} style={styles.logo} />
+        <Image source={Logo} style={styles.logo} />
       </Block>
       <Block flex space="between" style={[styles.padded]}>
         <Block
@@ -98,8 +96,8 @@ const styles = StyleSheet.create({
     },
   },
   logo: {
-    width: 200,
-    height: 60,
+    width: 80,
+    height: 80,
     zIndex: 2,
     position: "relative",
     marginTop: "-50%",

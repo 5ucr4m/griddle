@@ -47,9 +47,7 @@ function Login() {
       } else {
         // type === 'cancel'
       }
-    } catch ({ message }) {
-      console.log(message);
-    }
+    } catch ({ message }) {}
   }
 
   async function handleLogin() {

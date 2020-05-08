@@ -7,15 +7,16 @@ import { Container, Block, Icon } from "./styles";
 import IconIcon from "../../../../../assets/icons/smiley_face64.png";
 import NotyIcon from "../../../../../assets/icons/heart_notification64.png";
 
-function Header({ scrollOffset }) {
+function Header() {
   const notyCount = useSelector((state) => state.notifies.data.length);
   const unread = useSelector((state) => state.notifies.unreadNotifications);
   const navigation = useNavigation();
+
   return (
     <Container>
       <StatusBar backgroundColor="#332286" barStyle="light-content" />
       <Block>
-        <Icon>
+        <Icon activeOpacity={1}>
           <Image source={IconIcon} style={{ width: 32, height: 32 }} />
         </Icon>
       </Block>

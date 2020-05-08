@@ -23,7 +23,5 @@ const persistor = persistStore(store);
 
 sagaMiddleware.run(rootSaga);
 
-console.log("store criada e instanciada ...: ", store.getState());
-
 export { store, persistor };
 export default store;

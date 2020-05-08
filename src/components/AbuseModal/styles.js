@@ -1,6 +1,7 @@
 import styled from "styled-components/native";
 
 export const Container = styled.View``;
+
 export const Content = styled.View`
   width: 85%;
   align-self: center;
@@ -37,5 +38,14 @@ export const Button = styled.TouchableOpacity`
 `;
 
 export const CloseModal = styled.TouchableOpacity`
-  padding: 10px 40px;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  border-width: 1px;
+  border-color: #fff;
+  top: -10px;
+  right: -10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
 `;
