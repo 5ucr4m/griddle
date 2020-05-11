@@ -1,12 +1,13 @@
 {
   "expo": {
-    "name": "griddle",
+    "name": "Griddle",
     "slug": "griddle",
+    "privacy": "unlisted",
     "platforms": [
       "ios",
       "android"
     ],
-    "version": "1.0.1",
+    "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -21,7 +22,13 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.griddleinc.griddle",
+      "buildNumber": "1.0.0",
+      "supportsTablet": false
+    },
+    "android": {
+      "package": "com.griddleinc.griddle",
+      "versionCode": 1
     },
     "description": ""
   }
