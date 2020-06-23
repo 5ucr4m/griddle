@@ -22,12 +22,12 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.griddleinc.griddle",
+      "bundleIdentifier": "com.griddleincapp.griddle",
       "buildNumber": "1.0.0",
       "supportsTablet": false
     },
     "android": {
-      "package": "com.griddleinc.griddle",
+      "package": "com.griddleincapp.griddle",
       "versionCode": 1
     },
     "description": ""

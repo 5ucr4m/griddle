@@ -173,7 +173,7 @@ function Card({ image, onPress, winner = false, category = "" }) {
           <Block Block flex style={{ paddingTop: 15, paddingHorizontal: 20 }}>
             <Author>@{user.username}</Author>
             <Title>
-              {!!title.trim() && `#${title.trim()}`}
+              {!!title && `#${title.trim()}`}
               {"     "}
               {formatDistanceToNow(new Date(image.time))}
             </Title>
