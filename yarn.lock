@@ -2419,6 +2419,11 @@ expand-brackets@^2.1.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
+expo-apple-authentication@~2.1.0:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/expo-apple-authentication/-/expo-apple-authentication-2.1.1.tgz#ecba053fb6ae688f6a83553a192403e968eef931"
+  integrity sha512-E3k0Poo53N3pXimRVYpmxXhF+0PutQWYlQpfNFzRzZX+TjsHVehrTKmtd1KOimFpIs+u39MhsDQIIoMas12/dw==
+
 expo-asset@~8.1.4:
   version "8.1.4"
   resolved "https://registry.yarnpkg.com/expo-asset/-/expo-asset-8.1.4.tgz#5265c28c1c279b2f9779269195bec4caf250ba5d"

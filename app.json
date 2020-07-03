@@ -3,10 +3,7 @@
     "name": "Griddle",
     "slug": "griddle",
     "privacy": "unlisted",
-    "platforms": [
-      "ios",
-      "android"
-    ],
+    "platforms": ["ios", "android"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,12 +15,11 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "bundleIdentifier": "com.griddleincapp.griddle",
       "buildNumber": "1.0.0",
+      "usesAppleSignIn": true,
       "supportsTablet": false
     },
     "android": {

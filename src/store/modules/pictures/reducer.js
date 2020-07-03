@@ -13,6 +13,13 @@ export default function notify(state = INITIAL_STATE, action) {
         draft.loading = true;
       });
     }
+
+    case "@pictures/STOP_LOADING": {
+      return produce(state, (draft) => {
+        draft.loading = false;
+      });
+    }
+
     case "@pictures/LOAD_PICTURES": {
       const resp = action.payload.pictures.reduce((photo, item) =>
         photo.picture_id > item.picture_id ? photo : item

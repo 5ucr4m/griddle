@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import * as Facebook from "expo-facebook";
 import { Block, Text, theme } from "galio-framework";
 
 import {
@@ -15,7 +14,9 @@ import {
 import { Button, Icon, Input } from "../../components";
 import { Images, argonTheme } from "../../constants";
 
-import api from "../../service/api";
+import AppleLogin from "./components/AppleLogin";
+import FacebookLogin from "./components/FacebookLogin";
+
 import session from "../../service/session";
 import * as SessionActions from "../../store/modules/session/actions";
 
@@ -27,28 +28,6 @@ function Login() {
   const [animatedOpacity, setAnimatedOpacity] = useState(new Animated.Value(0));
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-
-  async function loginWithFacebook() {
-    try {
-      await Facebook.initializeAsync("562014587974431");
-      const { type, token } = await Facebook.logInWithReadPermissionsAsync({
-        permissions: ["public_profile", "email"],
-      });
-
-      if (type === "success") {
-        const { data } = await api.post("/users/signin_fb", {
-          token_fb: token,
-        });
-
-        const { token: appToken, user } = data;
-        dispatch(
-          SessionActions.addSession(user.id, appToken, user.username, user)
-        );
-      } else {
-        // type === 'cancel'
-      }
-    } catch ({ message }) {}
-  }
 
   async function handleLogin() {
     setLoading(true);
@@ -95,21 +74,8 @@ function Login() {
                 Sign In
               </Text>
               <Block row style={{ marginTop: theme.SIZES.BASE }}>
-                <Button
-                  style={{ ...styles.socialButtons }}
-                  onPress={loginWithFacebook}
-                >
-                  <Block row>
-                    <Icon
-                      name="logo-facebook"
-                      family="Ionicon"
-                      size={14}
-                      color={"black"}
-                      style={{ marginTop: 2, marginRight: 5 }}
-                    />
-                    <Text style={styles.socialTextButtons}>Facebook</Text>
-                  </Block>
-                </Button>
+                <FacebookLogin />
+                <AppleLogin />
               </Block>
             </Block>
             <Block flex>
@@ -233,7 +199,7 @@ const styles = StyleSheet.create({
   },
   socialTextButtons: {
     color: argonTheme.COLORS.PRIMARY,
-    fontWeight: "800",
+    fontWeight: "600",
     fontSize: 14,
   },
   inputIcons: {

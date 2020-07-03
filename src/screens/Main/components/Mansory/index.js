@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { Animated } from "react-native";
+import { Animated, View, Text } from "react-native";
 import { Container } from "./styles";
 import PhotoCard from "../../../../components/PhotoCard";
 
@@ -81,6 +81,16 @@ function Mansory({ images, scrollOffset }) {
       item: item,
       user_id: 123,
     });
+  }
+
+  if (!images) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text style={{ color: "#999", fontSize: 20 }}>
+          No images to display!!
+        </Text>
+      </View>
+    );
   }
 
   return (
