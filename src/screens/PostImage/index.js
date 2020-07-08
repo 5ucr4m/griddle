@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { StatusBar } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Dimensions } from "react-native";
 import * as Permissions from "expo-permissions";
@@ -49,12 +48,13 @@ export default function PostImage() {
           token: "",
         });
       }
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
     <Container>
-      <StatusBar barStyle="light-content" />
       <Header />
       <Content>
         <Card

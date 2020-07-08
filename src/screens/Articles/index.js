@@ -1,4 +1,11 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useCallback,
+  useMemo,
+} from "react";
+import { Feather, MaterialIcons } from "@expo/vector-icons";
 import { useRoute } from "@react-navigation/native";
 import Gestures from "react-native-easy-gestures";
 import Header from "./components/header";
@@ -9,42 +16,51 @@ import { TouchableOpacity } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import DateDistance from "../../helpers/dateDistance";
 
-import { Container, Content, Author, Abuse, Background, Title } from "./styles";
+import { Container, Content, Author, Background, Title } from "./styles";
+
 import AbuseModal from "../../components/AbuseModal";
+import BlockModal from "../../components/BlockModal";
 
 import FloatIcon from "./components/FloatIcon";
+import { useSelector } from "react-redux";
 
 function Articles() {
   const route = useRoute();
   const item = route.params.item;
   const gestures = useRef(null);
   const [visible, setVisible] = useState(false);
+  const [blockModal, setBlockModal] = useState(false);
   const [icons, setIcons] = useState([]);
+  const user_id = useSelector((state) => state.user.data.id);
 
   useEffect(() => {
     handleVotes();
   }, []);
 
-  function close() {
+  const close = useCallback(() => {
     setVisible(false);
-  }
+  }, []);
 
-  function getRandomNumber(min, max) {
+  const closeBlockModal = useCallback(() => {
+    setBlockModal(false);
+  }, []);
+
+  const getRandomNumber = useCallback((min, max) => {
     return Math.random() * (max - min) + min;
-  }
+  }, []);
 
-  function handleVotes() {
+  const handleVotes = useCallback(() => {
     if (item.vote.length > 0) {
       const array = item.vote.map((vt) => ({ id: vt.id, name: vt.type_vote }));
       setIcons(array);
     } else {
       setIcons([]);
     }
-  }
+  }, []);
 
-  function renderEmots() {
+  const renderEmots = useCallback(() => {
     return (
-      <>
+      <React.Fragment>
         {icons.map((icon) => (
           <FloatIcon
             name={icon.name}
@@ -54,12 +70,18 @@ function Articles() {
             onComplete={() => {}}
           />
         ))}
-      </>
+      </React.Fragment>
     );
-  }
+  }, [icons]);
 
-  const title = !!item.title ? item.title : item.name;
-  const time = !!item.time ? item.time : item.createdAt;
+  const title = useMemo(() => (!!item.title ? item.title : item.name), [
+    item.title,
+    item.name,
+  ]);
+  const time = useMemo(() => (!!item.time ? item.time : item.createdAt), [
+    item.time,
+    item.createdAt,
+  ]);
 
   return (
     <Background>
@@ -107,11 +129,28 @@ function Articles() {
                   <Title>DateDistance( new Date(item.time) )</Title>
                 )}
               </Block>
-              <Block flex>
-                <TouchableOpacity onPress={() => setVisible(true)}>
-                  <Abuse>report abuse</Abuse>
-                </TouchableOpacity>
-              </Block>
+              {user_id !== item.user_id && (
+                <Block row>
+                  <TouchableOpacity
+                    onPress={() => setVisible(true)}
+                    style={{
+                      padding: 5,
+                      borderRadius: 20,
+                    }}
+                  >
+                    <Feather name="more-vertical" size={20} />
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => setBlockModal(true)}
+                    style={{
+                      padding: 5,
+                      borderRadius: 20,
+                    }}
+                  >
+                    <MaterialIcons name="block" size={20} />
+                  </TouchableOpacity>
+                </Block>
+              )}
             </Block>
 
             <Comments id={item.picture_id} />
@@ -119,6 +158,7 @@ function Articles() {
         </Content>
 
         <AbuseModal visible={visible} close={close} />
+        <BlockModal visible={blockModal} close={closeBlockModal} />
       </Container>
     </Background>
   );

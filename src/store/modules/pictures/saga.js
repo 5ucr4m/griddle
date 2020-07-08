@@ -6,7 +6,6 @@ import picturesActions from "../pictures/actions";
 export function* loadPictures() {
   try {
     const resp = yield call(picturesService.getAll);
-    console.log(resp);
     yield put(picturesActions.loadPictures(resp));
   } catch (err) {
     console.log(err);

@@ -1,38 +1,59 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useCallback, useMemo, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useRoute } from "@react-navigation/native";
-import { ActivityIndicator, Text } from "react-native";
+import { ActivityIndicator, Text, View, Alert } from "react-native";
+import { Checkbox } from "galio-framework";
 import Modal from "react-native-modal";
 import api from "../../service/api";
 
-import {
-  Container,
-  Content,
-  Title,
-  TextArea,
-  Button,
-  CloseModal,
-} from "./styles";
+import { Container, Content, Title, Button, CloseModal } from "./styles";
 
 function AbuseModal({ visible, close }) {
   const route = useRoute();
   const item = route.params.item;
+  const [values, setValues] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [description, setDescription] = useState("");
   const user_id = useSelector((state) => state.session.user.id);
 
-  async function handleSubmitAbuse() {
+  const handleSubmitAbuse = useCallback(async (description) => {
     setLoading(true);
+
     const abuse = {
       user_id,
       picture_id: item.picture_id,
       description,
     };
-    await api.post("/abuse", abuse);
-    setLoading(false);
-    setDescription("");
-    close();
-  }
+
+    try {
+      await api.post("/abuse", abuse);
+      setLoading(false);
+      setValues([]);
+      close();
+    } catch (err) {
+      Alert.alert("Someting are wrong");
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  const handleSelectAbuse = useCallback((item) => {
+    const finded = values.find((x) => x.name === item.name);
+
+    if (!finded) {
+      setValues((x) => [...x, item]);
+    } else {
+      setValues((arr) =>
+        arr.map((value) => (value.name === item.name ? item : value))
+      );
+    }
+  }, []);
+
+  const description = useMemo(() => {
+    const arrayOfItens = values.filter((item) => item.value);
+    return arrayOfItens.length === 0
+      ? ""
+      : arrayOfItens.map((item) => item.name).join(", ");
+  }, [values]);
 
   return (
     <Container>
@@ -43,17 +64,51 @@ function AbuseModal({ visible, close }) {
           extraScrollHeight={50}
         >
           <Title style={{ marginTop: 20 }}>Report Abuse!!</Title>
-          <TextArea
-            multiline={true}
-            numberOfLines={4}
-            returnKeyType="done"
-            value={description}
-            onChangeText={setDescription}
-            scrollEnabled={false}
-          />
+          <View style={{ width: "80%", marginVertical: 20 }}>
+            <Checkbox
+              color="primary"
+              label="Nudity"
+              onChange={(check) =>
+                handleSelectAbuse({ name: "Nudity", value: check })
+              }
+              style={{ marginBottom: 10 }}
+            />
+            <Checkbox
+              color="primary"
+              label="Profanity"
+              onChange={(check) =>
+                handleSelectAbuse({ name: "Profanity", value: check })
+              }
+              style={{ marginBottom: 10 }}
+            />
+            <Checkbox
+              color="primary"
+              label="Racism"
+              onChange={(check) =>
+                handleSelectAbuse({ name: "Racism", value: check })
+              }
+              style={{ marginBottom: 10 }}
+            />
+            <Checkbox
+              color="primary"
+              label="Violence"
+              onChange={(check) =>
+                handleSelectAbuse({ name: "Violence", value: check })
+              }
+              style={{ marginBottom: 10 }}
+            />
+            <Checkbox
+              color="primary"
+              label="Other"
+              onChange={(check) =>
+                handleSelectAbuse({ name: "Other", value: check })
+              }
+              style={{ marginBottom: 10 }}
+            />
+          </View>
           <Button
-            onPress={handleSubmitAbuse}
-            disabled={description.length <= 3}
+            onPress={() => handleSubmitAbuse(description)}
+            disabled={!description}
           >
             {loading ? (
               <ActivityIndicator color="#fff" />
