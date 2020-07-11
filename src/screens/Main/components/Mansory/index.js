@@ -83,7 +83,9 @@ function Mansory({ images, scrollOffset }) {
     });
   }
 
-  if (!images) {
+  console.log(images);
+
+  if (!images || images.length === 0) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <Text style={{ color: "#999", fontSize: 20 }}>

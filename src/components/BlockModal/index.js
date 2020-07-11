@@ -1,13 +1,16 @@
 import React, { useState, useCallback } from "react";
+import { useDispatch } from "react-redux";
 import { useRoute } from "@react-navigation/native";
 import { ActivityIndicator, Text, View, Alert } from "react-native";
 import Modal from "react-native-modal";
 import api from "../../service/api";
 
+import { loading as getPictures } from "../../store/modules/pictures/actions";
 import { Container, Content, Title, Button, CloseModal } from "./styles";
 
 function AbuseModal({ visible, close }) {
   const route = useRoute();
+  const dispatch = useDispatch();
   const item = route.params.item;
   const [loading, setLoading] = useState(false);
 
@@ -19,7 +22,7 @@ function AbuseModal({ visible, close }) {
       await api.post("/users/blocked", {
         user_id,
       });
-
+      dispatch(getPictures());
       close();
     } catch (err) {
       Alert.alert("Someting are wrong");

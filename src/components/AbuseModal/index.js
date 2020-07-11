@@ -1,5 +1,5 @@
-import React, { useState, useCallback, useMemo, useEffect } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useCallback, useMemo } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useRoute } from "@react-navigation/native";
 import { ActivityIndicator, Text, View, Alert } from "react-native";
 import { Checkbox } from "galio-framework";
@@ -26,13 +26,12 @@ function AbuseModal({ visible, close }) {
 
     try {
       await api.post("/abuse", abuse);
-      setLoading(false);
       setValues([]);
-      close();
     } catch (err) {
       Alert.alert("Someting are wrong");
     } finally {
       setLoading(false);
+      close();
     }
   }, []);
 

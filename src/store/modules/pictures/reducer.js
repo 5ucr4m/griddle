@@ -21,12 +21,15 @@ export default function notify(state = INITIAL_STATE, action) {
     }
 
     case "@pictures/LOAD_PICTURES": {
-      const resp = action.payload.pictures.reduce((photo, item) =>
-        photo.picture_id > item.picture_id ? photo : item
-      );
+      const arr = action.payload.pictures;
+      const resp = !!arr.length
+        ? arr.reduce((photo, item) =>
+            photo.picture_id > item.picture_id ? photo : item
+          )
+        : null;
 
       return produce(state, (draft) => {
-        draft.data = action.payload.pictures;
+        draft.data = arr;
         draft.lastPick = resp;
         draft.loading = false;
       });

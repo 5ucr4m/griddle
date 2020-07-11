@@ -117,7 +117,7 @@ function Articles() {
             >
               <Block flex>
                 <Author>@{item.user.username}</Author>
-                {!!title.trim() ? (
+                {!!title && !!title.trim() ? (
                   <Block row>
                     <Title numberOfLines={1}>{`#${title.trim()}`}</Title>
                     <Title>
@@ -126,7 +126,7 @@ function Articles() {
                     </Title>
                   </Block>
                 ) : (
-                  <Title>DateDistance( new Date(item.time) )</Title>
+                  <Title>{DateDistance(new Date(item.time))}</Title>
                 )}
               </Block>
               {user_id !== item.user_id && (

@@ -4,6 +4,7 @@ import picturesService from "../../../service/pictures";
 import picturesActions from "../pictures/actions";
 
 export function* loadPictures() {
+  console.log("loadPictures");
   try {
     const resp = yield call(picturesService.getAll);
     yield put(picturesActions.loadPictures(resp));
