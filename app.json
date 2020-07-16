@@ -26,6 +26,9 @@
       "package": "com.griddleme.app",
       "versionCode": 1
     },
-    "description": ""
+    "description": "",
+    "facebookAppId": "562014587974431",
+    "facebookDisplayName": "GriddleMe",
+    "facebookScheme": "fb562014587974431"
   }
 }
