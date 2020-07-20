@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Platform } from "react-native";
+import * as Crypto from "expo-crypto";
 import * as AppleAuthentication from "expo-apple-authentication";
 import { useDispatch } from "react-redux";
 
@@ -9,8 +10,9 @@ import api from "../../../service/api";
 
 const AppleLogin = () => {
   const dispatch = useDispatch();
-  const loginWithApple = async ({ identityToken }) => {
-    console.log({ identityToken });
+
+  const loginWithApple = async ({ identityToken, email, state }) => {
+    console.log({ identityToken, email, state });
     try {
       const { data } = await api.post("/users/signin_apple", {
         identityToken,
@@ -39,15 +41,25 @@ const AppleLogin = () => {
       style={[styles.socialButtons, { marginLeft: 20 }]}
       onPress={async () => {
         try {
+          const csrf = Math.random().toString(36).substring(2, 15);
+          const nonce = Math.random().toString(36).substring(2, 10);
+          const hashedNonce = await Crypto.digestStringAsync(
+            Crypto.CryptoDigestAlgorithm.SHA256,
+            nonce
+          );
+
           const credential = await AppleAuthentication.signInAsync({
             requestedScopes: [
               AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
               AppleAuthentication.AppleAuthenticationScope.EMAIL,
             ],
+            state: csrf,
+            nonce: hashedNonce,
           });
 
           console.log(credential);
-          loginWithApple({ identityToken: credential.identityToken });
+          const { identityToken, email, state } = credential;
+          loginWithApple({ identityToken, email, state });
         } catch (e) {
           if (e.code === "ERR_CANCELED") {
             console.log(e);
