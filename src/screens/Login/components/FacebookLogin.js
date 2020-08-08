@@ -1,6 +1,7 @@
 import React from "react";
 import * as Facebook from "expo-facebook";
 import { Block, Text } from "galio-framework";
+import { Alert } from "react-native";
 import { StyleSheet } from "react-native";
 import { useDispatch } from "react-redux";
 
@@ -17,11 +18,15 @@ const FacebookLogin = () => {
   const loginWithFacebook = async () => {
     try {
       await Facebook.initializeAsync("562014587974431");
-      const { type, token } = await Facebook.logInWithReadPermissionsAsync({
+      const response = await Facebook.logInWithReadPermissionsAsync({
         permissions: ["public_profile", "email"],
       });
 
+      const { type, token } = response;
+      console.log("facebook data: ", response);
+
       if (type === "success") {
+        // console.log("success data: ", response);
         const { data } = await api.post("/users/signin_fb", {
           token_fb: token,
         });
@@ -31,9 +36,11 @@ const FacebookLogin = () => {
           SessionActions.addSession(user.id, appToken, user.username, user)
         );
       } else {
-        // type === 'cancel'
+        Alert.alert("Error");
       }
-    } catch ({ message }) {}
+    } catch (error) {
+      console.log(error.data);
+    }
   };
 
   return (
