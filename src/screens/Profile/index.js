@@ -6,7 +6,6 @@ import Modal from "react-native-modalbox";
 import { Block, Text } from "galio-framework";
 import * as ImagePicker from "expo-image-picker";
 import { MaterialIcons } from "@expo/vector-icons";
-import reverse from "../../helpers/arrayReverse";
 
 import {
   Container,
@@ -52,6 +51,10 @@ function Profile({ navigation }) {
 
   function cleanUp() {
     dispatch(sessionActions.logout());
+  }
+
+  function handleNavigateAccounts() {
+    navigation.navigate("Accounts");
   }
 
   async function handleChangeAvatarGalery() {
@@ -131,13 +134,29 @@ function Profile({ navigation }) {
             />
           </TouchableOpacity>
           <Block middle style={{ marginVertical: 20 }}>
-            <Button
-              small
-              style={{ backgroundColor: argonTheme.COLORS.DEFAULT }}
-              onPress={() => cleanUp()}
-            >
-              LOGOFF
-            </Button>
+            <Block row>
+              <Button
+                small
+                style={{
+                  backgroundColor: argonTheme.COLORS.DEFAULT,
+                  width: 120,
+                }}
+                onPress={() => cleanUp()}
+              >
+                LOGOFF
+              </Button>
+              <Block style={{ marginHorizontal: 10 }}></Block>
+              <Button
+                small
+                style={{
+                  backgroundColor: argonTheme.COLORS.ACTIVE,
+                  width: 120,
+                }}
+                onPress={() => handleNavigateAccounts()}
+              >
+                SOCIAL ACCOUNTS
+              </Button>
+            </Block>
             <Block row space="between" style={{ marginVertical: 20 }}>
               <Block middle flex={1}>
                 {loadingSelfies ? (

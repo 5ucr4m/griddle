@@ -3,6 +3,11 @@ import { useSelector } from "react-redux";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as SecureStore from "expo-secure-store";
+import { Feather } from "@expo/vector-icons";
+import { TouchableOpacity } from "react-native";
+import { Block } from "galio-framework";
+
+import { argonTheme } from "../constants";
 
 import HomeScreen from "../screens/Home";
 import LoginScreen from "../screens/Login";
@@ -17,6 +22,7 @@ import ArticlesScreen from "../screens/Articles";
 import NotificationScreen from "../screens/Notification";
 import PostImageScreen from "../screens/PostImage";
 import GuestProfileScreen from "../screens/GuestProfile";
+import AccountsScreen from "../screens/Accounts";
 
 const RootStack = createStackNavigator();
 const AuthStack = createStackNavigator();
@@ -119,6 +125,30 @@ function AuthStackScreens() {
         name="GuestProfile"
         component={GuestProfileScreen}
         options={defaultOptions}
+      />
+
+      <AuthStack.Screen
+        name="Accounts"
+        component={AccountsScreen}
+        options={{
+          headerLeft: (props) => (
+            <TouchableOpacity
+              style={{
+                marginLeft: 10,
+                height: 40,
+                width: 40,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              {...props}
+            >
+              <Feather name="chevron-left" size={20} color="white" />
+            </TouchableOpacity>
+          ),
+          headerStyle: { backgroundColor: argonTheme.COLORS.PRIMARY },
+          headerTintColor: "#fff",
+          title: "linked social accounts",
+        }}
       />
     </AuthStack.Navigator>
   );

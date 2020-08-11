@@ -17,7 +17,7 @@ const FacebookLogin = () => {
 
   const loginWithFacebook = async () => {
     try {
-      await Facebook.initializeAsync("562014587974431");
+      await Facebook.initializeAsync("268431247257894");
       const response = await Facebook.logInWithReadPermissionsAsync({
         permissions: ["public_profile", "email"],
       });
@@ -28,7 +28,7 @@ const FacebookLogin = () => {
       if (type === "success") {
         // console.log("success data: ", response);
         const { data } = await api.post("/users/signin_fb", {
-          token_fb: token,
+          identityToken: token,
         });
 
         const { token: appToken, user } = data;

@@ -29,6 +29,36 @@ const AppleLogin = () => {
     }
   };
 
+  async function handlePressButton() {
+    try {
+      const csrf = Math.random().toString(36).substring(2, 15);
+      const nonce = Math.random().toString(36).substring(2, 10);
+      const hashedNonce = await Crypto.digestStringAsync(
+        Crypto.CryptoDigestAlgorithm.SHA256,
+        nonce
+      );
+
+      const credential = await AppleAuthentication.signInAsync({
+        requestedScopes: [
+          AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
+          AppleAuthentication.AppleAuthenticationScope.EMAIL,
+        ],
+        state: csrf,
+        nonce: hashedNonce,
+      });
+
+      console.log(credential);
+      const { identityToken, email, state } = credential;
+      loginWithApple({ identityToken, email, state });
+    } catch (e) {
+      if (e.code === "ERR_CANCELED") {
+        console.log(e);
+      } else {
+        console.log(e);
+      }
+    }
+  }
+
   if (Platform.OS !== "ios") {
     return null;
   }
@@ -39,36 +69,8 @@ const AppleLogin = () => {
       buttonStyle={AppleAuthentication.AppleAuthenticationButtonStyle.WHITE}
       cornerRadius={5}
       style={[styles.socialButtons, { marginLeft: 20 }]}
-      onPress={async () => {
-        try {
-          const csrf = Math.random().toString(36).substring(2, 15);
-          const nonce = Math.random().toString(36).substring(2, 10);
-          const hashedNonce = await Crypto.digestStringAsync(
-            Crypto.CryptoDigestAlgorithm.SHA256,
-            nonce
-          );
-
-          const credential = await AppleAuthentication.signInAsync({
-            requestedScopes: [
-              AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
-              AppleAuthentication.AppleAuthenticationScope.EMAIL,
-            ],
-            state: csrf,
-            nonce: hashedNonce,
-          });
-
-          console.log(credential);
-          const { identityToken, email, state } = credential;
-          loginWithApple({ identityToken, email, state });
-        } catch (e) {
-          if (e.code === "ERR_CANCELED") {
-            console.log(e);
-          } else {
-            console.log(e);
-          }
-        }
-      }}
-    />
+      onPress={handlePressButton}
+    ></AppleAuthentication.AppleAuthenticationButton>
   );
 };
 
@@ -82,9 +84,14 @@ const styles = StyleSheet.create({
       width: 0,
       height: 4,
     },
+    marginLeft: 20,
     shadowRadius: 8,
     shadowOpacity: 0.1,
     elevation: 1,
+  },
+  center: {
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
